@@ -46,6 +46,7 @@ import argparse
 import random
 import yaml
 import numpy as np
+import pandas as pd
 from torch.backends import cudnn
 from prediction import MultiGraphGAN
 from data_loader import *
@@ -175,7 +176,7 @@ if __name__ == '__main__':
 
       # Save data into csv files
         print("saving source graphs into csv file...") 
-        f = source_graphs.numpy()
+        f = source_graphs.cpu().numpy()
         dataframe = pd.DataFrame(data=f.astype(float))
         dataframe.to_csv('source_graphs.csv', sep=' ', header=True, float_format='%.6f', index=False)
 
